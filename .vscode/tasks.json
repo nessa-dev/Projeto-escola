@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compilar C (output)",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+        "${file}",
+        "-o",
+        "${workspaceFolder}\\output\\${fileBasenameNoExtension}.exe"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "detail": "Compila o arquivo C atual e salva em output/"
+    },
+    {
+      "label": "Executar em terminal externo",
+      "type": "shell",
+      "command": "cmd.exe",
+      "args": [
+        "/c",
+        "start",
+        "cmd.exe",
+        "/k",
+        "\"${workspaceFolder}\\output\\${fileBasenameNoExtension}.exe\""
+      ],
+      "group": "none",
+      "problemMatcher": [],
+      "detail": "Roda o .exe em uma janela preta separada"
+    }
+  ]
+}
