@@ -81,6 +81,7 @@ int main() {
                                 printf("3 - Atualizar\n");
                                 printf("0 - Voltar\n");
                                 scanf("%d", &subopcao);
+                                getchar();
                                 
                                 switch (subopcao) {
                                     case 1: {
@@ -109,6 +110,10 @@ int main() {
                                             qtdAlunos++;
 
                                             printf("\nAluno cadastrado com sucesso!\n");
+                                            while (getchar() != '\n'); // limpa tudo até o Enter
+                                            printf("Pressione Enter para continuar...");
+                                            getchar();
+                                            
                                         } else {
                                             printf("O limite foi atingido!\n");
                                         }
@@ -118,7 +123,7 @@ int main() {
                                     //Excluir alunos
 
                                     case 2: {
-                                        printf("\n#### Lista de Alunos ####\n");
+                                        printf("\n**** Lista de Alunos ****\n");
                                         for (int i = 0; i < qtdAlunos; i++) {
                                             printf("Matrícula: %d - Nome: %s - Sexo: %c\n", listarAlunos[i].matricula, listarAlunos[i].nome, listarAlunos[i].sexo);
                                         }
@@ -216,6 +221,8 @@ int main() {
                                 printf("3 - Atualizar\n");
                                 printf("0 - Voltar\n");
                                 scanf("%d", &subopcao_prof);
+                                getchar();
+                                
                                 switch (subopcao_prof) {
                                     
                                     // incluir professor 
@@ -245,6 +252,11 @@ int main() {
                                                 qtdProfessores++;
 
                                                 printf("\nProfessor cadastrado com sucesso!\n");
+                                                while (getchar() != '\n'); // limpa tudo até o Enter
+                                                printf("Pressione Enter para continuar...");
+                                                getchar();
+                                                
+                                                
                                             } else {
                                                 printf("O limite foi atingido!\n");
                                             }
@@ -253,7 +265,7 @@ int main() {
                                         
                                         // Excluir professor
                                         case 2: {
-                                            printf("\n#### Lista de Professores ####\n");
+                                            printf("\n**** Lista de Professores ****\n");
                                             for (int i = 0; i < qtdProfessores; i++) {
                                                 printf("Matrícula: %d - Nome: %s - Sexo: %c\n", listarProfessores[i].matricula, listarProfessores[i].nome, listarProfessores[i].sexo);
                                             }
@@ -353,6 +365,7 @@ int main() {
                             printf("5 - Remover Aluno\n");
                             printf("0 - Voltar\n");
                             scanf("%d", &subopcao_disc);
+                            getchar();
                     
                             switch (subopcao_disc) {
                             
@@ -362,8 +375,6 @@ int main() {
                                         Disciplina nova_disc;
                                 
                                         printf("\nIncluir Disciplina\n");
-                                
-                                        getchar(); 
                                         printf("Nome da disciplina: ");
                                         fgets(nova_disc.nome, sizeof(nova_disc.nome), stdin);
                                         nova_disc.nome[strcspn(nova_disc.nome, "\n")] = '\0';
@@ -382,6 +393,9 @@ int main() {
                                         listarDisciplinas[qtdDisciplinas++] = nova_disc;
                                 
                                         printf("\nDisciplina cadastrada com sucesso!\n");
+                                        while (getchar() != '\n'); // limpa tudo até o Enter
+                                        printf("Pressione Enter para continuar...");
+                                        getchar();
                                     } else {
                                         printf("O limite de disciplinas foi atingido!\n");
                                     }
@@ -551,6 +565,17 @@ int main() {
                     printf("Matrícula: %d - Nome: %s - Sexo: %c\n", listarAlunos[i].matricula, listarAlunos[i].nome, listarAlunos[i].sexo);
                 }
                 break;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
