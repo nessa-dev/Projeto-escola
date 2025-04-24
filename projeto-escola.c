@@ -672,12 +672,83 @@ int main() {
                         printf("Professor: %s\n", listarDisciplinas[i].codProfessor);
                     }
                 }
-                printf("Pressione Enter para continuar...");
-                getchar();
-                break;
+                }
+                
+            ////////////////////////////////////////
+            case 2: {
+                    
+            int codigoBusca;
+            printf("\nDigite o código da disciplina que deseja detalhar: ");
+            scanf("%d", &codigoBusca);
+            getchar(); 
+                 
+            int encontrou = 0;
+            for (int i = 0; i < qtdDisciplinas; i++) {
+            if (listarDisciplinas[i].codigo == codigoBusca) {
+            encontrou = 1;
+            printf("\n--- Detalhes da Disciplina ---\n");
+            printf("Nome: %s\n", listarDisciplinas[i].nome);
+            printf("Semestre: %d\n", listarDisciplinas[i].semestre);
+            printf("Professor (código): %d\n", listarDisciplinas[i].codProfessor);
+            
+            if (listarDisciplinas[i].totalAlunos == 0) {
+                printf("Nenhum aluno matriculado nesta disciplina.\n");
+            } else {
+                printf("\nAlunos matriculados:\n");
+                for (int j = 0; j < listarDisciplinas[i].totalAlunos; j++) {
+                    int idAluno = listarDisciplinas[i].alunosIds[j];
+                    
+                    for (int k = 0; k < qtdAlunos; k++) {
+                        if (listarAlunos[k].matricula == idAluno) {
+                            printf("- %s (Matrícula: %d)\n", listarAlunos[k].nome, listarAlunos[k].matricula);
+                            break;
+                        }
+                    }
+                }
             }
             
-        }
+            break;
+            }    
+            }    
+               if (!encontrou) {
+            printf("Disciplina com código %d não encontrada.\n", codigoBusca);
+            }  
+                }
+                
+                /////////////////////////////////////////
+                case 3: {
+                    
+                int encontrou = 0;
+                printf("\n### Disciplinas com mais de 40 alunos: ###\n");
+                   
+                for (int i = 0; i < qtdDisciplinas; i++) {
+                if (listarDisciplinas[i].totalAlunos > 40) {
+                encontrou = 1; 
+            
+               char nomeProfessor[100] = "Professor não encontrado";
+               for (int j = 0; j < qtdProfessores; j++) {
+               if (listarProfessores[j].matricula == listarDisciplinas[i].codProfessor) { 
+               strcpy(nomeProfessor, listarProfessores[j].nome);
+               break;
+                }
+            }
+                
+            printf("\nDisciplina: %s\n", listarDisciplinas[i].nome);
+            printf("Total de Alunos: %d\n", listarDisciplinas[i].totalAlunos);
+            printf("Professor: %s\n", nomeProfessor);  
+                
+                }
+                }
+                   
+                if (!encontrou) {
+               printf("Nenhuma disciplina com mais de 40 alunos foi encontrada.\n");
+               } 
+                    
+                }
+                    printf("Pressione Enter para continuar...");
+                    getchar();
+                    break;
+                    }
 
 			} while (cadastro4 != 0);
 			break;
@@ -694,7 +765,3 @@ int main() {
 
 	return 0;
 }
-
-
-
-
